@@ -1,0 +1,13 @@
+skill_name: locate_object
+
+server_language: python
+
+goals:
+  object: int32
+
+result:
+  pose: geometry_msgs/PoseStamped
+
+outcomes:
+  - success
+  - failed

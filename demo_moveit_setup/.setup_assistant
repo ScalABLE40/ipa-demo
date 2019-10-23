@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: demo_resources
+    relative_path: urdf/ur5e_robot_egp50.urdf.xacro
+    xacro_args: "--inorder "
+  SRDF:
+    relative_path: config/ur5e_egp50.srdf
+  CONFIG:
+    author_name: led
+    author_email: led@led.led
+    generated_timestamp: 1571837748

@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="cell_ur5e">
+ 
+  <xacro:macro name="cell_ur5e">
+
+   <xacro:property name="wall_position_x" value="1.47" />
+   <xacro:property name="wall_position_y" value="0.96" />
+   <xacro:property name="wall_thikness" value="0.05" />
+   <xacro:property name="wall_height" value="1.15" /> 
+
+   <xacro:property name="wall_length" value="1.52" />
+   <xacro:property name="wall_width" value="1.01" />
+   
+
+    <link name="cell_base_link"/>
+
+    <link name="cell_YZ_wall0">
+      <collision>
+        <geometry>
+          <box size="${wall_thikness} ${wall_width} ${wall_height}"/>
+        </geometry>
+        <origin rpy="0 0 0" xyz="${wall_thikness/2} ${wall_width/2} ${wall_height/2}"/>
+      </collision>
+    </link>
+    
+    <link name="cell_YZ_wall1">
+      <collision>
+        <geometry>
+          <box size="${wall_thikness} ${wall_width} ${wall_height}"/>
+        </geometry>
+        <origin rpy="0 0 0" xyz="${wall_thikness/2} ${wall_width/2} ${wall_height/2} "/>
+      </collision>
+    </link>
+    
+    <link name="cell_XZ_wall0">
+      <collision>
+        <geometry>
+          <box size="${wall_length}  ${wall_thikness} ${wall_height}"/>
+        </geometry>
+        <origin rpy="0 0 0" xyz="${wall_length/2} ${wall_thikness/2} ${wall_height/2}"/>
+      </collision>
+    </link>
+    
+    <link name="cell_XZ_wall1">
+      <collision>
+        <geometry>
+          <box size="${wall_length} ${wall_thikness} ${wall_height} "/>
+        </geometry>
+        <origin rpy="0 0 0" xyz="${wall_length/2} ${wall_thikness/2} ${wall_height/2}"/>
+      </collision>
+    </link>
+
+
+   <!-- Joints-->
+
+    <joint name="wall_YZ_joint0" type="fixed">
+        <parent link="cell_base_link"/>
+        <child link="cell_YZ_wall0" />
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+    </joint>
+
+    <joint name="wall_YZ_joint1" type="fixed">
+        <parent link="cell_base_link"/>
+        <child link="cell_YZ_wall1" />
+        <origin xyz="${wall_position_x} 0.0 0.0" rpy="0.0 0.0 0.0" />
+    </joint>
+
+    <joint name="wall_XZ_joint0" type="fixed">
+        <parent link="cell_base_link"/>
+        <child link="cell_XZ_wall0" />
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+    </joint>
+
+    <joint name="wall_XZ_joint1" type="fixed">
+        <parent link="cell_base_link"/>
+        <child link="cell_XZ_wall1" />
+        <origin xyz="0.0 ${wall_position_y} 0.0" rpy="0.0 0.0 0.0" />
+    </joint>
+
+
+  </xacro:macro>
+</robot>
+

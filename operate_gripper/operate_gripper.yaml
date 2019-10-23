@@ -1,0 +1,11 @@
+skill_name: operate_gripper
+
+server_language: python
+
+goals:
+   close: bool
+
+outcomes:
+  - success
+  - failed
+

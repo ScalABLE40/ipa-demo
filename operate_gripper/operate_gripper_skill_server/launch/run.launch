@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <arg name='action_name' default="OperateGripperSkill"/>
+
+  <node pkg="operate_gripper_skill_server" type="operate_gripper_skill.py" name="operate_gripper_skill" output="screen">
+      <param name='action_name' value='$(arg action_name)' />
+  </node>
+
+</launch>

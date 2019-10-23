@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="ur5e_egp50">
+
+  <xacro:include filename="$(find ur_e_description)/urdf/ur5e.urdf.xacro"/>
+   
+
+  <!-- common stuff -->
+  <xacro:include filename="$(find ur_e_description)/urdf/common.gazebo.xacro" />
+
+  <!-- Load ur5e + Custom Gripper-->
+  <xacro:include filename="$(find ur_e_description)/urdf/ur5e.urdf.xacro" />
+  <xacro:include filename="$(find demo_resources)/urdf/egp50.urdf.xacro" />
+  <xacro:include filename="$(find demo_resources)/urdf/cell.urdf.xacro" />
+
+  <!-- Instantiate arm + gripper -->
+  <xacro:arg name="kinematics_config" default="$(find ur_e_description)/config/ur5e_default.yaml"/>
+  <xacro:ur5e_robot prefix="" joint_limited="false"/>
+  <xacro:schunk_egp50 />
+  <xacro:cell_ur5e />
+
+  <link name="world" />
+
+  <joint name="world_base_joint" type="fixed">
+    <parent link="world" />
+    <child link = "base_link" />
+    <origin xyz="0.28 0.46 0.01" rpy="0.0 0.0 0.0" />
+  </joint>
+
+  <joint name="world_cell_joint" type="fixed">
+    <parent link="world" />
+    <child link = "cell_base_link" />
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+  </joint>
+
+  <joint name="gripper_joint" type="fixed">
+    <parent link="ee_link" />
+    <child link = "egp50_base_link" />
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 1.57 0.0" />
+  </joint>
+</robot>
+

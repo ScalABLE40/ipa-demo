@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <arg name='action_name' default="LocateObjectSkill"/>
+
+  <node pkg="locate_object_skill_server" type="locate_object_skill.py" name="locate_object_skill" output="screen">
+      <param name='action_name' value='$(arg action_name)' />
+  </node>
+
+</launch>

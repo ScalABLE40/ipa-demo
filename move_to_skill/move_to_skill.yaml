@@ -1,0 +1,10 @@
+skill_name: move_to_skill
+
+server_language: python
+
+goals:
+  pose: geometry_msgs/Pose
+
+outcomes:
+  - success
+  - failed

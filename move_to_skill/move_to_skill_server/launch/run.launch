@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <arg name='action_name' default="MoveToSkill"/>
+
+  <node pkg="move_to_skill_server" type="move_to_skill.py" name="move_to_skill" output="screen">
+      <param name='action_name' value='$(arg action_name)' />
+  </node>
+
+</launch>
