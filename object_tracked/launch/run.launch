@@ -1,0 +1,6 @@
+<launch>
+    <include file="$(find realsense2_camera)/launch/rs_camera.launch"/>
+
+    <include file="$(find object_tracked)/launch/tracking.launch"/>
+    <node pkg="tf" type="static_transform_publisher" name="camera_link_broadcaster" args="1.33 0.41 0.103   -0.1305262 0 0.9914449 0  world camera_link 100" />
+</launch>

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>object_tracked</name>
+  <version>2.2.8</version>
+  <description>RealSense Camera package allowing access to Intel T265 Tracking module and SR300 and D400 3D cameras</description>
+  <maintainer email="sergey.dorodnicov@intel.com">Sergey Dorodnicov</maintainer>
+  <maintainer email="doron.hirshberg@intel.com">Doron Hirshberg</maintainer>
+  <license>Apache 2.0</license>
+  <buildtool_depend>catkin</buildtool_depend>>
+  <export>
+  </export>
+</package>
