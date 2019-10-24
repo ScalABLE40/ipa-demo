@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scxml xmlns="http://www.w3.org/2005/07/scxml" version="1.0" binding="early" xmlns:qt="http://www.qt.io/2015/02/scxml-ext" name="action" qt:editorversion="4.7.84" initial="MoveToSkill">
+    <qt:editorinfo initialGeometry="179.97;56.10;-20;-20;40;40"/>
+    <final id="success">
+        <qt:editorinfo scenegeometry="179.97;308.87;159.97;288.87;40;40" geometry="179.97;308.87;-20;-20;40;40"/>
+    </final>
+    <final id="failed">
+        <qt:editorinfo scenegeometry="179.97;308.87;159.97;288.87;40;40" geometry="179.97;308.87;-20;-20;40;40"/>
+    </final>
+    <state id="MoveToSkill">
+        <qt:editorinfo scenegeometry="-80.88;-373.25;39.72;3.39;181.82;107.24" geometry="-80.88;-373.25;120.60;376.64;181.82;107.24"/>
+        <datamodel>
+            <data id="actionName" expr="&quot;MoveToSkill&quot;"/>
+            <data id="actionGoal" expr="{&quot;pose&quot;:{'position': {'y': 0.473, 'x': 1.082, 'z': 0.037}, 'orientation': {'y': 0.890, 'x': -0.453, 'z': -0.032, 'w': 0.037}}}">
+                <qt:editorinfo geometry="26.49;30.57;0;0;0;0"/>
+            </data>
+            <data id="actionType" expr="'move_to_skill_msgs/MoveToSkillAction'"/>
+            <data id="actionResult" expr="{}"/>
+            <data id="outcomes" expr="[&quot;success&quot;,&quot;failed&quot;]">
+                <qt:editorinfo geometry="26.52;25.50;0;0;0;0"/>
+            </data>
+        </datamodel>
+        <transition type="external" event="success" target="success"/>
+        <transition type="external" event="failed" target="failed"/>
+    </state>
+</scxml>

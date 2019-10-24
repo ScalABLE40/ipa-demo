@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scxml xmlns="http://www.w3.org/2005/07/scxml" version="1.0" binding="early" name="demo_all.scxml" qt:editorversion="4.9.2" xmlns:qt="http://www.qt.io/2015/02/scxml-ext" initial="MoveToSkill">
+    <qt:editorinfo initialGeometry="296.06;40.69;-20;-20;40;40"/>
+    <state id="MoveToSkill">
+        <qt:editorinfo scenegeometry="84.55;-261.68;205.15;114.96;181.82;107.24" geometry="84.55;-261.68;120.60;376.64;181.82;107.24"/>
+        <datamodel>
+            <data id="actionName" expr="&quot;MoveToSkill&quot;"/>
+            <data id="actionGoal" expr="{&quot;pose&quot;:{'position': {'y':0.476, 'x': 0.924, 'z': 0.159}, 'orientation': {'y': 0.892, 'x': -0.451, 'z': -0.007, 'w': 0.013}}}">
+                <qt:editorinfo geometry="26.49;30.57;0;0;0;0"/>
+            </data>
+            <data id="actionType" expr="'move_to_skill_msgs/MoveToSkillAction'"/>
+            <data id="actionResult" expr="{}"/>
+            <data id="outcomes" expr="[&quot;success&quot;,&quot;failed&quot;]">
+                <qt:editorinfo geometry="26.52;25.50;0;0;0;0"/>
+            </data>
+        </datamodel>
+        <transition type="external" event="success" target="MoveToSkill_1"/>
+    </state>
+    <state id="MoveToSkill_1">
+        <qt:editorinfo scenegeometry="84.55;-102.47;205.15;274.17;181.82;107.24" geometry="84.55;-102.47;120.60;376.64;181.82;107.24"/>
+        <datamodel>
+            <data id="actionName" expr="&quot;MoveToSkill&quot;"/>
+            <data id="actionGoal" expr="{&quot;pose&quot;:{'position': {'y':0.483, 'x': 1.033, 'z': 0.117}, 'orientation': {'y': 0.892, 'x': -0.451, 'z': -0.007, 'w': 0.013}}}">
+                <qt:editorinfo geometry="26.49;30.57;0;0;0;0"/>
+            </data>
+            <data id="actionType" expr="'move_to_skill_msgs/MoveToSkillAction'"/>
+            <data id="actionResult" expr="{}"/>
+            <data id="outcomes" expr="[&quot;success&quot;,&quot;failed&quot;]">
+                <qt:editorinfo geometry="26.52;25.50;0;0;0;0"/>
+            </data>
+        </datamodel>
+        <transition type="external" event="success" target="OperateGripperSkill_1"/>
+    </state>
+    <state id="OperateGripperSkill_1">
+        <qt:editorinfo scenegeometry="84.55;66.91;205.15;443.55;181.82;107.24" geometry="84.55;66.91;120.60;376.64;181.82;107.24"/>
+        <datamodel>
+            <data id="actionName" expr="&quot;OperateGripperSkill&quot;"/>
+            <data id="actionGoal" expr="{&quot;close&quot;:False}">
+                <qt:editorinfo geometry="26.49;30.57;0;0;0;0"/>
+            </data>
+            <data id="actionType" expr="'operate_gripper_skill_msgs/OperateGripperSkillAction'"/>
+            <data id="actionResult" expr="{}"/>
+            <data id="outcomes" expr="[&quot;success&quot;,&quot;failed&quot;]">
+                <qt:editorinfo geometry="26.52;25.50;0;0;0;0"/>
+            </data>
+        </datamodel>
+        <transition type="external" event="succeeded" target="MoveToSkill_2">
+            <qt:editorinfo endTargetFactors="47.94;72.53"/>
+        </transition>
+    </state>
+    <state id="MoveToSkill_2">
+        <qt:editorinfo scenegeometry="84.55;248.03;205.15;624.67;181.82;107.24" geometry="84.55;248.03;120.60;376.64;181.82;107.24"/>
+        <datamodel>
+            <data id="actionName" expr="&quot;MoveToSkill&quot;"/>
+            <data id="actionGoal" expr="{&quot;pose&quot;:{'position': {'y':0.483, 'x': 1.033, 'z': 0.025}, 'orientation': {'y': 0.892, 'x': -0.451, 'z': -0.007, 'w': 0.013}}}">
+                <qt:editorinfo geometry="26.49;30.57;0;0;0;0"/>
+            </data>
+            <data id="actionType" expr="'move_to_skill_msgs/MoveToSkillAction'"/>
+            <data id="actionResult" expr="{}"/>
+            <data id="outcomes" expr="[&quot;success&quot;,&quot;failed&quot;]">
+                <qt:editorinfo geometry="26.52;25.50;0;0;0;0"/>
+            </data>
+        </datamodel>
+        <transition type="external" event="success" target="OperateGripperSkill"/>
+    </state>
+    <state id="OperateGripperSkill">
+        <qt:editorinfo scenegeometry="84.55;408.25;205.15;784.89;181.82;107.24" geometry="84.55;408.25;120.60;376.64;181.82;107.24"/>
+        <datamodel>
+            <data id="actionName" expr="&quot;OperateGripperSkill&quot;"/>
+            <data id="actionGoal" expr="{&quot;close&quot;:True}">
+                <qt:editorinfo geometry="26.49;30.57;0;0;0;0"/>
+            </data>
+            <data id="actionType" expr="'operate_gripper_skill_msgs/OperateGripperSkillAction'"/>
+            <data id="actionResult" expr="{}"/>
+            <data id="outcomes" expr="[&quot;success&quot;,&quot;failed&quot;]">
+                <qt:editorinfo geometry="26.52;25.50;0;0;0;0"/>
+            </data>
+        </datamodel>
+        <transition type="external" event="succeeded" target="MoveToSkill_3"/>
+    </state>
+    <state id="MoveToSkill_3">
+        <qt:editorinfo scenegeometry="365.68;408.25;486.28;784.89;181.82;107.24" geometry="365.68;408.25;120.60;376.64;181.82;107.24"/>
+        <datamodel>
+            <data id="actionName" expr="&quot;MoveToSkill&quot;"/>
+            <data id="actionGoal" expr="{&quot;pose&quot;:{'position': {'y':0.483, 'x': 1.033, 'z': 0.117}, 'orientation': {'y': 0.892, 'x': -0.451, 'z': -0.007, 'w': 0.013}}}">
+                <qt:editorinfo geometry="26.49;30.57;0;0;0;0"/>
+            </data>
+            <data id="actionType" expr="'move_to_skill_msgs/MoveToSkillAction'"/>
+            <data id="actionResult" expr="{}"/>
+            <data id="outcomes" expr="[&quot;success&quot;,&quot;failed&quot;]">
+                <qt:editorinfo geometry="26.52;25.50;0;0;0;0"/>
+            </data>
+        </datamodel>
+        <transition type="external" event="success" target="Final_1"/>
+    </state>
+    <final id="Final_1">
+        <qt:editorinfo scenegeometry="577.19;659.26;557.19;639.26;40;40" geometry="577.19;659.26;-20;-20;40;40"/>
+    </final>
+</scxml>

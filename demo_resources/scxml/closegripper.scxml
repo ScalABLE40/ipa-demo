@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scxml xmlns="http://www.w3.org/2005/07/scxml" version="1.0" binding="early" xmlns:qt="http://www.qt.io/2015/02/scxml-ext" name="operate_gripper_skill" qt:editorversion="4.9.2" initial="OperateGripperSkill">
+    <qt:editorinfo initialGeometry="401.25;60.02;-20;-20;40;40"/>
+    <state id="OperateGripperSkill">
+        <qt:editorinfo scenegeometry="189.74;-255.23;310.34;121.41;181.82;107.24" geometry="189.74;-255.23;120.60;376.64;181.82;107.24"/>
+        <datamodel>
+            <data id="actionName" expr="&quot;OperateGripperSkill&quot;"/>
+            <data id="actionGoal" expr="{&quot;close&quot;:True}">
+                <qt:editorinfo geometry="26.49;30.57;0;0;0;0"/>
+            </data>
+            <data id="actionType" expr="'operate_gripper_skill_msgs/OperateGripperSkillAction'"/>
+            <data id="actionResult" expr="{}"/>
+            <data id="outcomes" expr="[&quot;success&quot;,&quot;failed&quot;]">
+                <qt:editorinfo geometry="26.52;25.50;0;0;0;0"/>
+            </data>
+        </datamodel>
+        <transition type="external" event="failed" target="failed"/>
+        <transition type="external" event="succeeded" target="OperateGripperSkill_1"/>
+    </state>
+    <final id="failed">
+        <qt:editorinfo scenegeometry="738.61;175.03;718.61;155.03;40;40" geometry="738.61;175.03;-20;-20;40;40"/>
+    </final>
+    <state id="OperateGripperSkill_1">
+        <qt:editorinfo scenegeometry="189.74;-78.55;310.34;298.09;181.82;107.24" geometry="189.74;-78.55;120.60;376.64;181.82;107.24"/>
+        <datamodel>
+            <data id="actionName" expr="&quot;OperateGripperSkill&quot;"/>
+            <data id="actionGoal" expr="{&quot;close&quot;:False}">
+                <qt:editorinfo geometry="26.49;30.57;0;0;0;0"/>
+            </data>
+            <data id="actionType" expr="'operate_gripper_skill_msgs/OperateGripperSkillAction'"/>
+            <data id="actionResult" expr="{}"/>
+            <data id="outcomes" expr="[&quot;success&quot;,&quot;failed&quot;]">
+                <qt:editorinfo geometry="26.52;25.50;0;0;0;0"/>
+            </data>
+        </datamodel>
+        <transition type="external" event="failed" target="failed"/>
+        <transition type="external" event="succeeded" target="success"/>
+    </state>
+    <final id="success">
+        <qt:editorinfo scenegeometry="738.61;351.71;718.61;331.71;40;40" geometry="738.61;351.71;-20;-20;40;40"/>
+    </final>
+</scxml>
