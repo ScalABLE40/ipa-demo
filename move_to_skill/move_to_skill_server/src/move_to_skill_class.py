@@ -7,21 +7,19 @@ from move_to_skill_msgs.msg import MoveToSkillAction, MoveToSkillResult, MoveToS
 
 def RequestPlan(goal_pose):
 
-    plan = None
-
     def get_last_joint_state():
         state = rospy.wait_for_message("/joint_states", JointState, timeout=5)
         return state
 
     def setup_request():
         request = GetCartesianPathRequest()
-        request.group_name = "arm"
+        request.header.stamp = rospy.Time.now()
+        request.group_name = "manipulator"
         request.waypoints = [goal_pose.pose]
         request.max_step = 0.01
         request.jump_threshold = 0.0
         request.avoid_collisions = True
         request.start_state.joint_state = get_last_joint_state()
-        print(request)
         return request
 
     def plan():
@@ -36,18 +34,20 @@ def RequestPlan(goal_pose):
             rospy.loginfo(plan)
             rospy.loginfo(fraction)
             rospy.logerr("[GenerateCartesianPlan] Planning fraction is different than 1")
-            return False
-        return True
-
-    return plan(), plan
+            return False, None
+        return True, plan
+    
+    return plan()
 
 def ExecutePlan(plan):
 
     ac_ = actionlib.SimpleActionClient("/execute_trajectory", ExecuteTrajectoryAction)
+    ac_.wait_for_server()
     goal = ExecuteTrajectoryGoal()
     goal.trajectory = plan
+    goal.trajectory.joint_trajectory.header.stamp = rospy.Time.now()
     result = ac_.send_goal_and_wait(goal, execute_timeout=rospy.Duration(60.0))
-    return result.error_code.val
+    return result
 
 
 class MoveToSkill(object):
@@ -62,13 +62,14 @@ class MoveToSkill(object):
 
     def execute_skill(self, goal):
         result_, plan_ = RequestPlan(goal)
+        print(plan_)
         if(result_ == False):
             self.aborted(outcome="failed")
         else:
             self.percentage = 50
             self.feedback("Plan Done")
             result_ = ExecutePlan(plan_)
-            if(result_ == 1):
+            if(result_ == 3):
                 self.percentage = 100
                 self.feedback("Execution Done")
                 self.success(outcome="success")
