@@ -2,6 +2,7 @@ import rospy
 import actionlib
 
 from operate_gripper_skill_msgs.msg import OperateGripperSkillAction, OperateGripperSkillResult, OperateGripperSkillFeedback
+from ur_msgs.srv import SetIO, SetIORequest
 
 class OperateGripperSkill(object):
 
@@ -14,14 +15,29 @@ class OperateGripperSkill(object):
         self.outcomes = ["success", "failed"]
 
     def execute_skill(self, goal):
-        '''
-        The execution of the skill should be coded here.
-        In order to save you time, the methods check_preemption(), feedback(), success() and aborted() should be used.
-        The check_preemption() method should be called periodically.
-        The variable self.percentage should be updated when there is an evolution in the execution of the skill.
-        feedback() method should be called when there is an evolution in the execution of the skill.
-        '''
-        pass
+        
+        rospy.sleep(1.0) #We don't know 
+        request = SetIORequest()
+        request.fun = 1
+        request.state = 1
+        service = rospy.ServiceProxy("/ur_hardware_interface/set_io", SetIO)
+        if goal.close:
+            request.pin = 0
+        else:
+            request.pin = 1
+
+        answer = service.call(request)
+        print(answer)
+        if(answer.success == False):
+            self.aborted("failed")
+        rospy.sleep(0.5)
+        request.state = 0
+        answer = service.call(request)
+        if(answer.success == False):
+            self.aborted("failed")
+        self.success("success")
+        rospy.sleep(0.5)
+
 
     def feedback(self, status=None):
         feedback = OperateGripperSkillFeedback()
