@@ -8,4 +8,4 @@ moveit_setup_assistant_config:
   CONFIG:
     author_name: led
     author_email: led@led.led
-    generated_timestamp: 1571837748
+    generated_timestamp: 1571852974
